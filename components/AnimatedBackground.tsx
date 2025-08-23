@@ -49,30 +49,31 @@ export default function AnimatedBackground() {
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-[-1]">
       {/* Animated gradient background - mostly black with a hint of blue */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-950 to-black" />
       
       {/* Dynamic gradient overlay that follows mouse */}
       <motion.div
         className="absolute inset-0 opacity-20"
         animate={{
-          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 255, 255, 0.08) 0%, transparent 50%)`,
+          // Reduced the radius and opacity for subtler effect
+          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 255, 255, 0.04) 0%, transparent 30%)`,
         }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
       />
 
       {/* Floating particles - white */}
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute w-1 h-1 bg-white/40 rounded-full"
+          className="absolute w-1.5 h-1.5 bg-white/70 rounded-full shadow-lg"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
           }}
           animate={{
-            y: [0, -100, 0],
-            opacity: [0, 0.6, 0],
-            scale: [0, 1, 0],
+            y: [0, -120, 0],
+            opacity: [0, 0.9, 0],
+            scale: [0.7, 1.3, 0.7],
           }}
           transition={{
             duration: particle.duration,
@@ -87,7 +88,7 @@ export default function AnimatedBackground() {
       {orbs.map((orb) => (
         <motion.div
           key={orb.id}
-          className="absolute rounded-full blur-3xl"
+          className="absolute rounded-full blur-2xl"
           style={{
             left: `${orb.x}%`,
             top: `${orb.y}%`,
@@ -95,10 +96,10 @@ export default function AnimatedBackground() {
             height: orb.size,
           }}
           animate={{
-            y: [0, -50, 0],
-            x: [0, 20, 0],
-            opacity: [0.05, 0.15, 0.05],
-            scale: [0.8, 1.2, 0.8],
+            y: [0, -70, 0],
+            x: [0, 30, 0],
+            opacity: [0.12, 0.32, 0.12],
+            scale: [0.9, 1.3, 0.9],
           }}
           transition={{
             duration: orb.duration,
@@ -107,20 +108,20 @@ export default function AnimatedBackground() {
             ease: "easeInOut",
           }}
         >
-          <div className="w-full h-full bg-gradient-to-br from-white/10 via-white/5 to-white/10 rounded-full" />
+          <div className="w-full h-full bg-gradient-to-br from-white/30 via-white/10 to-white/30 rounded-full shadow-2xl" />
         </motion.div>
       ))}
 
       {/* Animated grid pattern - white */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="w-full h-full bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:100px_100px]" />
+      <div className="absolute inset-0 opacity-30">
+        <div className="w-full h-full bg-[linear-gradient(rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] bg-[size:100px_100px]" />
       </div>
 
       {/* Glowing arc similar to bolt.new - white */}
       <motion.div
-        className="absolute bottom-0 left-0 w-full h-96 opacity-15"
+        className="absolute bottom-0 left-0 w-full h-96 opacity-40"
         animate={{
-          opacity: [0.05, 0.2, 0.05],
+          opacity: [0.15, 0.5, 0.15],
         }}
         transition={{
           duration: 4,
@@ -134,10 +135,11 @@ export default function AnimatedBackground() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          {/* Main animated arc */}
           <motion.path
             d="M0 400 Q300 200 600 300 T1200 400"
             stroke="url(#gradient)"
-            strokeWidth="6"
+            strokeWidth="8"
             fill="none"
             strokeLinecap="round"
             animate={{
@@ -153,10 +155,19 @@ export default function AnimatedBackground() {
               ease: "easeInOut",
             }}
           />
+          {/* New pure white arc with more radius, closer to the main arc */}
+          <path
+            d="M0 390 Q300 170 600 270 T1200 390"
+            stroke="#fff"
+            strokeWidth="4"
+            fill="none"
+            strokeLinecap="round"
+            opacity="1"
+          />
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="50%" stopColor="#e5e7eb" />
+              <stop offset="50%" stopColor="#f1f1f1" />
               <stop offset="100%" stopColor="#ffffff" />
             </linearGradient>
           </defs>
@@ -165,11 +176,11 @@ export default function AnimatedBackground() {
 
       {/* Floating geometric shapes - white borders */}
       <motion.div
-        className="absolute top-1/4 right-1/4 w-32 h-32 border border-white/20 rounded-lg"
+        className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-white/50 rounded-lg shadow-lg"
         animate={{
           rotate: [0, 360],
-          scale: [1, 1.1, 1],
-          opacity: [0.05, 0.2, 0.05],
+          scale: [1, 1.15, 1],
+          opacity: [0.15, 0.5, 0.15],
         }}
         transition={{
           duration: 20,
@@ -179,11 +190,11 @@ export default function AnimatedBackground() {
       />
 
       <motion.div
-        className="absolute bottom-1/3 left-1/4 w-24 h-24 border border-white/20 rounded-full"
+        className="absolute bottom-1/3 left-1/4 w-24 h-24 border-2 border-white/50 rounded-full shadow-lg"
         animate={{
           rotate: [360, 0],
-          scale: [1, 1.2, 1],
-          opacity: [0.05, 0.25, 0.05],
+          scale: [1, 1.25, 1],
+          opacity: [0.15, 0.6, 0.15],
         }}
         transition={{
           duration: 15,
@@ -197,10 +208,10 @@ export default function AnimatedBackground() {
         className="absolute inset-0"
         animate={{
           background: [
-            "radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%)",
-            "radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 70%)",
-            "radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 70%)",
-            "radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 70%)",
+            "radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 70%)",
+            "radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 70%)",
+            "radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 70%)",
+            "radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 70%)",
           ],
         }}
         transition={{
