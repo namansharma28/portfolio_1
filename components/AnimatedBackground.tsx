@@ -37,8 +37,8 @@ export default function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-[-1]">
-      {/* Animated gradient background - darker */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
+      {/* Animated gradient background - mostly black with a hint of blue */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-black" />
       
       {/* Dynamic gradient overlay that follows mouse */}
       <motion.div
@@ -200,4 +200,4 @@ export default function AnimatedBackground() {
       />
     </div>
   );
-} 
+}

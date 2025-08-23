@@ -105,7 +105,7 @@ export default function Navigation() {
             <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-lg flex items-center justify-center">
               <Code2 size={20} className="text-white" />
             </div>
-            <span className="gradient-text">Naman Sharma</span>
+            <span className="gradient-text">Naman</span>
           </motion.div>
           
           {/* Desktop Navigation */}

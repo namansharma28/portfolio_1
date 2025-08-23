@@ -92,13 +92,13 @@ export default function LoadingIntro({ onComplete }: LoadingIntroProps) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 bg-cosmic-black flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden" // removed bg-cosmic-black
       variants={containerVariants}
       initial="hidden"
       animate={showContent ? "visible" : "hidden"}
     >
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-hero-gradient opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-black opacity-20" />
       
       {/* Floating Particles */}
       <motion.div
@@ -142,20 +142,20 @@ export default function LoadingIntro({ onComplete }: LoadingIntroProps) {
           
           <motion.h1
             className="text-5xl md:text-7xl font-bold gradient-text"
-            animate={{ 
-              textShadow: [
-                "0 0 20px rgba(59, 130, 246, 0.6)",
-                "0 0 40px rgba(59, 130, 246, 0.8)",
-                "0 0 20px rgba(59, 130, 246, 0.6)"
-              ]
-            }}
+            // animate={{ 
+            //   textShadow: [
+            //     "0 0 20px rgba(59, 130, 246, 0.6)",
+            //     "0 0 40px rgba(59, 130, 246, 0.8)",
+            //     "0 0 20px rgba(59, 130, 246, 0.6)"
+            //   ]
+            // }}
             transition={{ 
               duration: 2, 
               repeat: Infinity,
               ease: "easeInOut"
             }}
           >
-            Naman Sharma
+            Naman
           </motion.h1>
         </motion.div>
 

@@ -62,8 +62,8 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="section-padding relative min-h-screen flex items-center justify-center overflow-hidden">
-      
+    <section id="home" className="mt-12 section-padding relative min-h-screen flex items-center justify-center overflow-hidden">
+
       {/* Floating geometric shapes */}
       <motion.div
         className="absolute top-20 left-20 w-32 h-32 border border-white/20 rounded-lg opacity-20"
