@@ -1,39 +1,50 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function AnimatedBackground() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-
     window.addEventListener('mousemove', updateMousePosition);
     return () => window.removeEventListener('mousemove', updateMousePosition);
-  }, []);
+  }, [isMobile]);
 
-  // Generate random particles - reduced for performance
-  const particles = Array.from({ length: 25 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    duration: Math.random() * 15 + 8,
-    delay: Math.random() * 3,
-  }));
+  // Fewer or no particles/orbs on mobile
+  const particles = isMobile
+    ? []
+    : Array.from({ length: 25 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 3 + 1,
+        duration: Math.random() * 15 + 8,
+        delay: Math.random() * 3,
+      }));
 
-  // Generate floating orbs - reduced for performance
-  const orbs = Array.from({ length: 4 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 150 + 100,
-    duration: Math.random() * 12 + 8,
-    delay: Math.random() * 2,
-  }));
+  const orbs = isMobile
+    ? []
+    : Array.from({ length: 4 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 150 + 100,
+        duration: Math.random() * 12 + 8,
+        delay: Math.random() * 2,
+      }));
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-[-1]">
