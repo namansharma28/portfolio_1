@@ -99,7 +99,8 @@ export default function Footer() {
             variants={itemVariants}
           >
             <p className="flex items-center">
-              Made with <Heart size={16} className="mx-2 text-primary animate-pulse" /> by Your Name
+              Made with <Heart size={16} className="mx-2 text-primary animate-pulse" /> by Naman
+
             </p>
           </motion.div>
           
@@ -107,7 +108,7 @@ export default function Footer() {
             className="text-muted-foreground text-sm"
             variants={itemVariants}
           >
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <p>&copy; 2025 Naman. All rights reserved.</p>
           </motion.div>
 
           {/* Scroll to Top Button */}
