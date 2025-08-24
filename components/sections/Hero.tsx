@@ -10,7 +10,7 @@ export default function Hero() {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
 
-  const roles = ['Full Stack Developer', 'UI/UX Designer', 'Problem Solver', 'Code Architect'];
+  const roles = ['Full Stack Developer', 'ML Engineer', 'Problem Solver', 'Code Architect', 'UI/UX Designer'];
 
   useEffect(() => {
     const handleTyping = () => {
