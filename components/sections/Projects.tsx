@@ -7,53 +7,43 @@ const projects = [
   {
     title: 'TeamLane (Collaboration Platform)',
     description: 'Built with Next.js, TypeScript, Tailwind, MongoDB, WebSockets. Supports real-time team collaboration, Kanban boards, and role-based access.',
-    image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://github.com/namansharma28/TeamLane/blob/main/public/image.png?raw=true',
     tech: ['Next.js', 'TypeScript', 'MongoDB', 'WebSocket', 'NextAuth'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
+    github: 'https://github.com/namansharma28/TeamLane.git',
+    demo: 'https://teamlane.vercel.app',
     category: 'Full Stack',
     featured: true,
   },
   {
     title: 'Gravitas (Community & Event Management)',
     description: 'App for community-driven events, discussions, and networking. Focus on seamless UX and scalable backend.',
-    image: 'https://images.pexels.com/photos/7376/startup-photos.jpg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://github.com/namansharma28/Gravitas/blob/main/public/image.png?raw=true',
     tech: ['React', 'Node.js', 'MongoDB'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
+    github: 'https://github.com/namansharma28/Gravitas.git',
+    demo: 'https://gravitas-silk.vercel.app',
     category: 'Web App',
     featured: true,
   },
-  {
-    title: 'E-commerce Platform (SaaS for Creators)',
-    description: 'Shopify alternative — affordable, beginner-friendly platform with custom websites, backend, and payment integration.',
-    image: 'https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
-    category: 'SaaS',
-    featured: false,
-  },
-  {
-    title: 'Stock Market Predictor (ML Project)',
-    description: 'Streamlit app using Linear Regression & LSTM models for predicting stock prices. Includes moving averages, forecasts, and visualization.',
-    image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpg?auto=compress&cs=tinysrgb&w=800',
-    tech: ['Python', 'TensorFlow', 'Streamlit', 'LSTM'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
-    category: 'Machine Learning',
-    featured: false,
-  },
-  {
-    title: 'Sketch2Real (Pix2Pix GAN)',
-    description: 'Converts rough sketches into realistic images using a Pix2Pix GAN trained in TensorFlow.',
-    image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpg?auto=compress&cs=tinysrgb&w=800',
-    tech: ['TensorFlow', 'Python', 'Colab', 'JavaScript'],
-    github: 'https://github.com',
-    demo: 'https://demo.com',
-    category: 'AI/ML',
-    featured: false,
-  },
+  // {
+  //   title: 'Stock Market Predictor (ML Project)',
+  //   description: 'Streamlit app using Linear Regression & LSTM models for predicting stock prices. Includes moving averages, forecasts, and visualization.',
+  //   image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpg?auto=compress&cs=tinysrgb&w=800',
+  //   tech: ['Python', 'TensorFlow', 'Streamlit', 'LSTM'],
+  //   github: 'https://github.com',
+  //   demo: 'https://demo.com',
+  //   category: 'Machine Learning',
+  //   featured: false,
+  // },
+  // {
+  //   title: 'Sketch2Real (Pix2Pix GAN)',
+  //   description: 'Converts rough sketches into realistic images using a Pix2Pix GAN trained in TensorFlow.',
+  //   image: 'https://images.pexels.com/photos/590020/pexels-photo-590020.jpg?auto=compress&cs=tinysrgb&w=800',
+  //   tech: ['TensorFlow', 'Python', 'Colab', 'JavaScript'],
+  //   github: 'https://github.com',
+  //   demo: 'https://demo.com',
+  //   category: 'AI/ML',
+  //   featured: false,
+  // },
 ];
 
 export default function Projects() {
@@ -276,13 +266,13 @@ export default function Projects() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.button
+          {/* <motion.button
             className="btn-primary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             View All Projects
-          </motion.button>
+          </motion.button> */}
         </motion.div>
       </div>
     </section>

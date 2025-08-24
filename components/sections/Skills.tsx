@@ -173,8 +173,8 @@ export default function Skills() {
           <h3 className="heading-medium mb-8 text-foreground">Always Learning</h3>
           <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
             {[
-              'Machine Learning', 'Blockchain', 'Web3', 'Mobile Development', 
-              'Cloud Architecture', 'Microservices', 'GraphQL', 'Testing'
+              'Machine Learning', 'Mobile Development', 'Full Stack Development',
+              'Cloud Architecture', 'Microservices', 'Testing', 'Ideation', 'Project Management', 'UI/UX Design'
             ].map((skill, index) => (
               <motion.span
                 key={index}
