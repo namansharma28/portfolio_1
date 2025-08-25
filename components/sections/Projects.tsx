@@ -20,7 +20,7 @@ const projects = [
     image: 'https://github.com/namansharma28/Gravitas/blob/main/public/image.png?raw=true',
     tech: ['React', 'Node.js', 'MongoDB'],
     github: 'https://github.com/namansharma28/Gravitas.git',
-    demo: 'https://gravitas-silk.vercel.app',
+    demo: 'https://gravitas.page',
     category: 'Web App',
     featured: true,
   },
