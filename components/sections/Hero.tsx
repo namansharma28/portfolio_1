@@ -178,7 +178,7 @@ export default function Hero() {
         </motion.p>
 
         {/* CTA Buttons */}
-        <motion.div
+        {/* <motion.div
           className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16"
           variants={itemVariants}
         >
@@ -191,7 +191,7 @@ export default function Hero() {
           <button className="btn-secondary">
             Download Resume
           </button>
-        </motion.div>
+        </motion.div> */}
 
         {/* Social Links */}
         <motion.div
@@ -199,9 +199,9 @@ export default function Hero() {
           variants={itemVariants}
         >
           {[
-            { icon: Github, href: "https://github.com", label: "GitHub" },
-            { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-            { icon: Mail, href: "mailto:your.email@example.com", label: "Email" }
+            { icon: Github, href: "https://github.com/namansharma28", label: "GitHub" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/namansharma286/", label: "LinkedIn" },
+            { icon: Mail, href: "mailto:namansharma.web@gmail.com", label: "Email" }
           ].map((social, index) => (
             <motion.a
               key={index}

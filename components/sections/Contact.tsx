@@ -12,17 +12,17 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email',
-    value: 'naman.sharma@example.com',
+    value: 'namansharma.web@gmail.com',
     description: 'Send me an email anytime',
     color: 'from-blue-500 to-cyan-500',
   },
-  {
-    icon: Phone,
-    title: 'Phone',
-    value: '+1 (555) 123-4567',
-    description: 'Call me during business hours',
-    color: 'from-green-500 to-emerald-500',
-  },
+  // {
+  //   icon: Phone,
+  //   title: 'Phone',
+  //   value: '+1 (555) 123-4567',
+  //   description: 'Call me during business hours',
+  //   color: 'from-green-500 to-emerald-500',
+  // },
   {
     icon: MapPin,
     title: 'Location',
@@ -169,7 +169,7 @@ export default function Contact() {
           </motion.div>
 
           {/* Right Column - Contact Form */}
-          <motion.div
+       {/*   <motion.div
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
@@ -248,7 +248,7 @@ export default function Contact() {
                 </Button>
               </form>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>
