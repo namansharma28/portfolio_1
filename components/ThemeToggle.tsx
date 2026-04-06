@@ -15,13 +15,17 @@ export function ThemeToggle({ isMobile = false }: ThemeToggleProps) {
 
   return (
     <motion.button
-      className="cursor-target fixed z-50 p-3 rounded-full bg-backgroundLight/80 backdrop-blur-sm border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:bg-backgroundLight"
-      style={{
-        top: isMobile ? 'unset' : 'var(--spaceOuter)',
-        right: isMobile ? 'unset' : 'var(--spaceOuter)',
-        bottom: isMobile ? 'var(--spaceOuter)' : 'unset',
-        left: isMobile ? 'var(--spaceOuter)' : 'unset'
-      }}
+      className={`cursor-target p-3 rounded-full bg-backgroundLight/80 backdrop-blur-sm border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:bg-backgroundLight ${
+        isMobile ? 'relative' : 'fixed z-50'
+      }`}
+      style={
+        isMobile
+          ? {}
+          : {
+              top: 'var(--spaceOuter)',
+              right: 'var(--spaceOuter)'
+            }
+      }
       data-mobile={isMobile}
       aria-label="Toggle theme"
       onClick={toggleTheme}

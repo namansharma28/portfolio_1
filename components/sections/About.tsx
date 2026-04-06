@@ -119,23 +119,23 @@ export default function About() {
     <section 
       id="about" 
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center py-20 px-space-outer"
+      className="min-h-screen flex items-center justify-center py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-space-outer"
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       tabIndex={-1}
     >
       <div className="max-w-7xl w-full">
         <motion.div 
-          className="grid lg:grid-cols-2 gap-space-2xl items-start"
+          className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-space-2xl items-start"
           initial={{ opacity: 0 }}
           animate={{ opacity: visible ? 1 : 0 }}
           transition={{ duration: 0.8 }}
         >
           {/* Left Column - Text Content */}
-          <div className="flex flex-col space-y-8">
+          <div className="flex flex-col space-y-6 sm:space-y-8 order-2 lg:order-1">
             {/* Title with Decoder Animation */}
             <motion.h3 
-              className="text-2xl md:text-3xl font-medium text-textLight mb-space-l whitespace-nowrap"
+              className="text-xl sm:text-2xl md:text-3xl font-medium text-textLight mb-4 sm:mb-space-l"
               style={{
                 opacity: visible ? 1 : 0,
                 transition: 'opacity 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 0.6s'
@@ -146,21 +146,21 @@ export default function About() {
 
             {/* Bio Text */}
             <motion.div 
-              className="space-y-6 text-lg text-textLight/90 leading-relaxed"
+              className="space-y-4 sm:space-y-6 text-base sm:text-lg text-textLight/90 leading-relaxed"
               style={{
                 opacity: visible ? 1 : 0,
                 transition: 'opacity 1.2s cubic-bezier(0.4, 0.0, 0.2, 1) 1s'
               }}
             >
               <p>
-                I'm <strong className="text-primary">Naman Sharma</strong>,a full stack developer and machine learning enthusiast who enjoys turning ideas into real, usable products. I focus on building applications that are smooth, scalable, and intuitive, with equal attention to both how they work and how they feel. I like working across different parts of a system and bringing everything together into a cohesive experience.
+                I'm <strong className="text-primary">Naman Sharma</strong>, a full stack developer and machine learning enthusiast who enjoys turning ideas into real, usable products. I focus on building applications that are smooth, scalable, and intuitive, with equal attention to both how they work and how they feel.
               </p>
               
               <p>
-                My journey started with curiosity about how technology works and gradually evolved into building complete products from scratch. I work across frontend and backend development, system design, and data driven applications, while also exploring artificial intelligence and machine learning. I enjoy understanding problems deeply and creating solutions that are not just technically sound but also practical and efficient.
+                My journey started with curiosity about how technology works and gradually evolved into building complete products from scratch. I work across frontend and backend development, system design, and data driven applications, while also exploring artificial intelligence and machine learning.
               </p>
 
-              <p>
+              <p className="hidden sm:block">
                 Beyond coding, I enjoy contributing to communities, sharing knowledge, listening to music, 
                 and constantly learning new technologies. I believe in creating technology that not only solves 
                 problems but also delights users.
@@ -177,7 +177,7 @@ export default function About() {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="cursor-target group hover:bg-primary hover:text-background transition-all duration-300"
+                className="cursor-target group hover:bg-primary hover:text-background transition-all duration-300 w-full sm:w-auto"
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <span className="mr-2">Send me a message</span>
@@ -194,10 +194,10 @@ export default function About() {
           </div>
 
           {/* Right Column - Image and Decorative Elements */}
-          <div className="flex flex-col items-end">
-            {/* Tag with Divider */}
+          <div className="flex flex-col items-center lg:items-end order-1 lg:order-2">
+            {/* Tag with Divider - Hidden on mobile */}
             <motion.div 
-              className="flex items-center gap-3 mb-10 w-full"
+              className="hidden lg:flex items-center gap-3 mb-10 w-full"
               style={{
                 marginTop: '220px'
               }}
@@ -222,9 +222,27 @@ export default function About() {
               </motion.div>
             </motion.div>
 
+            {/* Mobile Title */}
+            <motion.div 
+              className="lg:hidden text-center mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ 
+                opacity: visible ? 1 : 0,
+                y: visible ? 0 : 20
+              }}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.3,
+                ease: [0.4, 0.0, 0.2, 1]
+              }}
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold text-textTitle mb-2">About Me</h2>
+              <div className="w-16 h-0.5 bg-primary mx-auto"></div>
+            </motion.div>
+
             {/* Profile Image Container */}
             <motion.div 
-              className="relative w-full max-w-md"
+              className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ 
                 opacity: visible ? 1 : 0,
@@ -241,8 +259,12 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-10" />
                 
                 {/* Placeholder for now - you can replace with actual image */}
-                <div className="w-full h-full flex items-center justify-center text-6xl">
-                  👨‍💻
+                <div className="w-full h-full flex items-center justify-center">
+                  <img 
+                    src="/myphoto.jpg" 
+                    alt="Naman Sharma" 
+                    className="w-full h-full object-cover rounded-2xl"
+                  />
                 </div>
                 
                 {/* Decorative Grid Overlay */}
@@ -258,9 +280,9 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Decorative SVG - Katakana Style */}
+              {/* Decorative SVG - Hidden on small mobile */}
               <motion.div
-                className="absolute -right-8 -bottom-4 text-textTitle/30 pointer-events-none"
+                className="hidden sm:block absolute -right-4 lg:-right-8 -bottom-4 text-textTitle/30 pointer-events-none"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: visible ? 1 : 0 }}
                 transition={{ 
@@ -269,7 +291,7 @@ export default function About() {
                   ease: [0.4, 0.0, 0.2, 1]
                 }}
               >
-                <svg width="120" height="160" viewBox="0 0 120 160" fill="currentColor">
+                <svg width="80" height="100" className="sm:w-[120px] sm:h-[160px]" viewBox="0 0 120 160" fill="currentColor">
                   <path d="M20 20 L100 20 M20 40 L80 40 M20 60 L90 60 M20 80 L70 80 M20 100 L85 100 M20 120 L75 120 M20 140 L95 140" 
                         stroke="currentColor" 
                         strokeWidth="2" 
@@ -282,9 +304,9 @@ export default function About() {
                 </svg>
               </motion.div>
 
-              {/* Floating Stats */}
+              {/* Floating Stats - Repositioned for mobile */}
               <motion.div
-                className="absolute -left-6 top-1/3 bg-background/90 backdrop-blur-sm border border-border rounded-xl p-4 shadow-lg"
+                className="absolute -left-2 sm:-left-6 top-1/4 sm:top-1/3 bg-background/90 backdrop-blur-sm border border-border rounded-xl p-3 sm:p-4 shadow-lg"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ 
                   opacity: visible ? 1 : 0,
@@ -296,12 +318,12 @@ export default function About() {
                   ease: [0.4, 0.0, 0.2, 1]
                 }}
               >
-                <div className="text-2xl font-bold text-primary">2+</div>
+                <div className="text-xl sm:text-2xl font-bold text-primary">2+</div>
                 <div className="text-xs text-textLight/70 uppercase tracking-wider">Years Experience</div>
               </motion.div>
 
               <motion.div
-                className="absolute -right-4 top-2/3 bg-background/90 backdrop-blur-sm border border-border rounded-xl p-4 shadow-lg"
+                className="absolute -right-2 sm:-right-4 top-2/3 bg-background/90 backdrop-blur-sm border border-border rounded-xl p-3 sm:p-4 shadow-lg"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ 
                   opacity: visible ? 1 : 0,
@@ -313,7 +335,7 @@ export default function About() {
                   ease: [0.4, 0.0, 0.2, 1]
                 }}
               >
-                <div className="text-2xl font-bold text-primary">10+</div>
+                <div className="text-xl sm:text-2xl font-bold text-primary">10+</div>
                 <div className="text-xs text-textLight/70 uppercase tracking-wider">Projects Built</div>
               </motion.div>
             </motion.div>

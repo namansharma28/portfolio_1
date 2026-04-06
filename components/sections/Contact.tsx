@@ -65,40 +65,40 @@ function ContactCard({ method, index }: { method: typeof contactMethods[0]; inde
       whileHover={{ y: -5 }}
     >
       <div className={`
-        relative p-8 rounded-2xl bg-gradient-to-br ${method.color} ${method.hoverColor}
+        relative p-4 sm:p-6 lg:p-8 rounded-2xl bg-gradient-to-br ${method.color} ${method.hoverColor}
         backdrop-blur-sm border border-primary/10 hover:border-primary/20
         transition-all duration-300 overflow-hidden
       `}>
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-4 right-4 w-20 h-20 border border-primary/20 rounded-full" />
-          <div className="absolute bottom-4 left-4 w-12 h-12 border border-primary/20 rounded-full" />
+          <div className="absolute top-2 sm:top-4 right-2 sm:right-4 w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 border border-primary/20 rounded-full" />
+          <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 border border-primary/20 rounded-full" />
         </div>
         
         <div className="relative z-10">
-          <div className="flex items-start justify-between mb-6">
-            <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors duration-300">
-              <method.icon size={24} className="text-primary" />
+          <div className="flex items-start justify-between mb-4 sm:mb-6">
+            <div className="w-10 sm:w-12 lg:w-14 h-10 sm:h-12 lg:h-14 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors duration-300">
+              <method.icon size={20} className="sm:w-6 sm:h-6 text-primary" />
             </div>
             {method.href && (
-              <ArrowUpRight size={20} className="text-primary/60 group-hover:text-primary transition-colors duration-300" />
+              <ArrowUpRight size={16} className="sm:w-5 sm:h-5 text-primary/60 group-hover:text-primary transition-colors duration-300" />
             )}
           </div>
           
-          <h3 className="text-lg font-bold text-textTitle mb-2">{method.title}</h3>
+          <h3 className="text-base sm:text-lg font-bold text-textTitle mb-2">{method.title}</h3>
           
           {method.href ? (
             <a 
               href={method.href}
-              className="cursor-target text-primary font-semibold mb-2 block hover:text-primary/80 transition-colors"
+              className="cursor-target text-primary font-semibold mb-2 block hover:text-primary/80 transition-colors text-sm sm:text-base"
             >
               {method.value}
             </a>
           ) : (
-            <p className="text-primary font-semibold mb-2">{method.value}</p>
+            <p className="text-primary font-semibold mb-2 text-sm sm:text-base">{method.value}</p>
           )}
           
-          <p className="text-textBody text-sm">{method.description}</p>
+          <p className="text-textBody text-xs sm:text-sm">{method.description}</p>
         </div>
       </div>
     </motion.div>
@@ -161,18 +161,18 @@ export default function Contact() {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <section id="contact" className="py-32 px-space-outer overflow-hidden">
+    <section id="contact" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-space-outer overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
           <motion.h2
-            className="text-6xl md:text-8xl font-bold mb-8"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold mb-4 sm:mb-6 lg:mb-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -186,22 +186,22 @@ export default function Contact() {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-textBody max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg lg:text-xl text-textBody max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             Ready to bring your ideas to life? Let's discuss your project and create something 
-            extraordinary together. I'm always excited to work on new challenges.
+            extraordinary together.
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 mb-20">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 mb-12 sm:mb-16 lg:mb-20">
           {/* Left Column - Contact Methods */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <motion.h3
-              className="text-3xl font-bold text-textTitle mb-8"
+              className="text-2xl sm:text-3xl font-bold text-textTitle mb-6 sm:mb-8"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -216,10 +216,10 @@ export default function Contact() {
           </div>
 
           {/* Right Column - CTA & Social */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Main CTA Card */}
             <motion.div
-              className="relative p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 overflow-hidden"
+              className="relative p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 overflow-hidden"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -240,30 +240,30 @@ export default function Contact() {
               
               <div className="relative z-10 text-center">
                 <motion.div
-                  className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6"
+                  className="w-16 sm:w-20 h-16 sm:h-20 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6"
                   animate={{ 
                     rotate: isHovered ? 360 : 0,
                     scale: isHovered ? 1.1 : 1
                   }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Send size={32} className="text-background" />
+                  <Send size={24} className="sm:w-8 sm:h-8 text-background" />
                 </motion.div>
                 
-                <h3 className="text-2xl font-bold text-textTitle mb-4">Ready to Start?</h3>
-                <p className="text-textBody mb-8 leading-relaxed">
+                <h3 className="text-xl sm:text-2xl font-bold text-textTitle mb-3 sm:mb-4">Ready to Start?</h3>
+                <p className="text-textBody mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
                   Let's discuss your project requirements and explore how we can work together 
                   to achieve your goals.
                 </p>
                 
                 <motion.a
                   href="mailto:namansharma.web@gmail.com?subject=Project Collaboration&body=Hi Naman, I'd like to discuss a project with you."
-                  className="cursor-target inline-flex items-center gap-3 px-8 py-4 bg-primary text-background rounded-full font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
+                  className="cursor-target inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-primary text-background rounded-full font-semibold hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 text-sm sm:text-base"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span>Send Message</span>
-                  <ArrowUpRight size={20} />
+                  <ArrowUpRight size={16} className="sm:w-5 sm:h-5" />
                 </motion.a>
               </div>
             </motion.div>
@@ -275,8 +275,8 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h4 className="text-lg font-semibold text-textTitle mb-6">Connect With Me</h4>
-              <div className="space-y-4">
+              <h4 className="text-base sm:text-lg font-semibold text-textTitle mb-4 sm:mb-6">Connect With Me</h4>
+              <div className="space-y-3 sm:space-y-4">
                 {socialLinks.map((social, index) => (
                   <SocialLink key={social.name} social={social} index={index} />
                 ))}
@@ -290,14 +290,14 @@ export default function Contact() {
 
         {/* Bottom Section */}
         <motion.div
-          className="text-center bg-gradient-to-r from-backgroundLight/20 to-background/10 rounded-3xl p-12 border border-primary/10"
+          className="text-center bg-gradient-to-r from-backgroundLight/20 to-background/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 border border-primary/10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <motion.h3
-            className="text-3xl md:text-4xl font-bold text-textTitle mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-textTitle mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -307,14 +307,14 @@ export default function Contact() {
           </motion.h3>
           
           <motion.p
-            className="text-lg text-textBody max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg text-textBody max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 1 }}
           >
             Whether you're a startup looking to make your mark or an established company seeking innovation, 
-            I'm here to help transform your vision into reality. Let's create something extraordinary together.
+            I'm here to help transform your vision into reality.
           </motion.p>
         </motion.div>
       </div>

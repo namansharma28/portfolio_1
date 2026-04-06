@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
-import { ThemeToggle } from './ThemeToggle'
+
 
 const navItems = [
   { name: 'Contact', href: '#contact' },
@@ -73,9 +73,6 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Theme Toggle */}
-      <ThemeToggle />
-      
       {/* Desktop Navigation - Vertical Layout inspired by inspiration3 */}
       <motion.nav
         className="fixed top-8 left-8 bottom-8 w-16 z-50 hidden lg:flex flex-col items-center justify-start"
@@ -109,7 +106,7 @@ export default function Navigation() {
                 key={item.name}
                 className={`cursor-target group relative px-4 py-3 text-base transition-all duration-300 inline-flex items-center ${
                   activeSection === item.href 
-                    ? 'text-textTitle font-bold' 
+                    ? 'text-textTitle font-black' 
                     : 'text-textBody hover:text-textTitle font-medium'
                 }`}
                 onClick={() => scrollToSection(item.href)}
@@ -127,17 +124,15 @@ export default function Navigation() {
               >
                 <span className="relative z-10">{item.name}</span>
                 
-                {/* Underline effect - positioned at the right side */}
+                {/* Enhanced underline effect - positioned at the right side */}
                 <motion.div
-                  className="absolute bg-primary rounded-full"
+                  className="absolute bg-gradient-to-b from-primary via-primary to-primary rounded-full"
                   initial={{ scaleY: 0 }}
                   animate={{ 
                     scaleY: activeSection === item.href ? 1 : 0,
                     transition: { 
-                      duration: 0.3, 
-                      ease: "easeInOut",
-                      // Active state comes from top, hover from bottom
-                      ...(activeSection === item.href ? {} : {})
+                      duration: 0.4, 
+                      ease: "easeInOut"
                     }
                   }}
                   whileHover={{ 
@@ -145,11 +140,11 @@ export default function Navigation() {
                     transition: { duration: 0.3, ease: "easeInOut" }
                   }}
                   style={{ 
-                    right: '8px',
-                    top: '12px',
-                    bottom: '12px',
-                    width: '4px',
-                    transformOrigin: activeSection === item.href ? 'bottom' : 'top'
+                    right: '6px',
+                    top: '8px',
+                    bottom: '8px',
+                    width: '6px',
+                    transformOrigin: activeSection === item.href ? 'bottom' : 'top',
                   }}
                 />
               </motion.button>
@@ -179,105 +174,189 @@ export default function Navigation() {
         </div>
       </motion.nav>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - More Interesting Design */}
       <motion.nav
-        className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-primary/10"
+        className="lg:hidden fixed top-0 left-0 right-0 z-40"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
-            {/* Mobile Logo */}
-            <motion.button
-              className="cursor-target text-2xl font-logo text-primary"
-              onClick={() => scrollToSection('#home')}
-              whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-            >
-              NS
-            </motion.button>
+        {/* Glassmorphism Background */}
+        <div className="transparent">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex items-center justify-between h-16">
+              {/* Mobile Logo */}
+              <motion.button
+                className="cursor-target text-2xl font-logo text-primary"
+                onClick={() => scrollToSection('#home')}
+                whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+              >
+                
+              </motion.button>
 
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="cursor-target p-2 text-textBody hover:text-primary transition-colors duration-300"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              <div className="flex items-center gap-4 z-50">
+                {/* Animated Menu Button */}
+                <motion.button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="cursor-target relative w-10 h-10 flex flex-col items-center justify-center space-y-1 group"
+                  aria-label="Toggle menu"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <motion.span
+                    className="w-6 h-0.5 bg-textBody group-hover:bg-primary transition-colors duration-300 rounded-full"
+                    animate={{
+                      rotate: isOpen ? 45 : 0,
+                      y: isOpen ? 6 : 0,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.span
+                    className="w-6 h-0.5 bg-textBody group-hover:bg-primary transition-colors duration-300 rounded-full"
+                    animate={{
+                      opacity: isOpen ? 0 : 1,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.span
+                    className="w-6 h-0.5 bg-textBody group-hover:bg-primary transition-colors duration-300 rounded-full"
+                    animate={{
+                      rotate: isOpen ? -45 : 0,
+                      y: isOpen ? -6 : 0,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.button>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Enhanced Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="fixed inset-0 bg-background/95 backdrop-blur-lg flex flex-col items-center justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-background/95 backdrop-blur-2xl"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }}
+              onClick={() => setIsOpen(false)}
             >
-              <div className="flex flex-col items-center space-y-8">
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.name}
-                    className={`cursor-target group relative text-2xl transition-all duration-300 ${
-                      activeSection === item.href 
-                        ? 'text-primary font-bold' 
-                        : 'text-textBody hover:text-primary font-medium'
-                    }`}
-                    onClick={() => scrollToSection(item.href)}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ 
-                      opacity: 1, 
-                      y: 0,
-                      scale: activeSection === item.href ? 1.02 : 1
-                    }}
-                    exit={{ opacity: 0, y: 30 }}
-                    transition={{ delay: index * 0.1, duration: 0.3 }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span className="relative z-10">{item.name}</span>
-                    
-                    {/* Mobile underline effect */}
-                    <motion.div
-                      className="absolute left-0 right-0 bottom-0 h-1 bg-primary rounded-full"
-                      initial={{ scaleX: 0 }}
+              {/* Animated Background Pattern */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary rounded-full blur-3xl animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-primary rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+              </div>
+
+              <div className="relative z-10 flex flex-col items-center justify-center h-full px-8" onClick={(e) => e.stopPropagation()}>
+                {/* Navigation Items with Stagger Animation */}
+                <div className="space-y-8 text-center">
+                  {navItems.map((item, index) => (
+                    <motion.button
+                      key={item.name}
+                      className={`cursor-target group relative block text-3xl sm:text-4xl transition-all duration-300 ${
+                        activeSection === item.href 
+                          ? 'text-primary font-black' 
+                          : 'text-textBody hover:text-primary font-medium'
+                      }`}
+                      onClick={() => scrollToSection(item.href)}
+                      initial={{ opacity: 0, y: 50, rotateX: -90 }}
                       animate={{ 
-                        scaleX: activeSection === item.href ? 1 : 0,
-                        transition: { duration: 0.3 }
+                        opacity: 1, 
+                        y: 0,
+                        rotateX: 0,
+                        scale: activeSection === item.href ? 1.05 : 1
                       }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.button>
-                ))}
+                      exit={{ opacity: 0, y: 50, rotateX: -90 }}
+                      transition={{ 
+                        delay: index * 0.1, 
+                        duration: 0.6,
+                        ease: [0.4, 0.0, 0.2, 1]
+                      }}
+                      whileHover={{ scale: 1.1, y: -5 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span className="relative z-10 block">{item.name}</span>
+                      
+                      {/* Enhanced underline with glow effect */}
+                      <motion.div
+                        className="absolute left-1/2 bottom-0 h-1 bg-gradient-to-r from-primary via-primary to-primary rounded-full"
+                        initial={{ scaleX: 0, x: '-50%' }}
+                        animate={{ 
+                          scaleX: activeSection === item.href ? 1 : 0,
+                          transition: { duration: 0.4, ease: [0.4, 0.0, 0.2, 1] }
+                        }}
+                        whileHover={{ 
+                          scaleX: 1,
+                          transition: { duration: 0.3 }
+                        }}
+                        style={{ 
+                          width: '80%',
+                          transformOrigin: 'center'
+                        }}
+                      />
+                      
+                      {/* Hover glow effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-primary/10 rounded-lg blur-xl"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileHover={{ 
+                          opacity: 1, 
+                          scale: 1.2,
+                          transition: { duration: 0.3 }
+                        }}
+                      />
+                    </motion.button>
+                  ))}
+                </div>
                 
-                {/* Mobile Social Links */}
-                <div className="flex items-center space-x-6 mt-12">
+                {/* Enhanced Social Links */}
+                <motion.div
+                  className="flex items-center space-x-8 mt-16"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 30 }}
+                  transition={{ delay: 0.6, duration: 0.4 }}
+                >
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={social.label}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="cursor-target p-3 rounded-full bg-backgroundLight/50 text-textLight hover:text-primary hover:bg-backgroundLight transition-all duration-300"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.8 }}
-                      transition={{ delay: 0.4 + index * 0.1, duration: 0.3 }}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
+                      className="cursor-target relative p-4 rounded-2xl bg-backgroundLight/30 backdrop-blur-sm border border-primary/20 text-textLight hover:text-primary hover:border-primary/40 transition-all duration-300"
+                      initial={{ opacity: 0, scale: 0.5, rotateY: -180 }}
+                      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                      exit={{ opacity: 0, scale: 0.5, rotateY: -180 }}
+                      transition={{ 
+                        delay: 0.8 + index * 0.1, 
+                        duration: 0.5,
+                        ease: [0.4, 0.0, 0.2, 1]
+                      }}
+                      whileHover={{ 
+                        scale: 1.2, 
+                        y: -8,
+                        rotateY: 15,
+                        transition: { duration: 0.3 }
+                      }}
+                      whileTap={{ scale: 0.9 }}
                       aria-label={social.label}
                     >
-                      <social.icon size={20} />
+                      <social.icon size={24} />
+                      
+                      {/* Glow effect on hover */}
+                      <motion.div
+                        className="absolute inset-0 bg-primary/20 rounded-2xl blur-lg"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
                     </motion.a>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           )}

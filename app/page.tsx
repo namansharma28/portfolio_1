@@ -9,7 +9,8 @@ import Skills from '@/components/sections/Skills'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/Footer'
 import LoadingScreen from '@/components/LoadingScreen'
-import { ThemeToggle } from '@/components/ThemeToggle'
+import { MobileFloatingButton, MobilePullIndicator, MobileSwipeIndicator } from '@/components/MobileEnhancements'
+import { MobileThemeToggle, DesktopThemeToggle } from '@/components/MobileThemeToggle'
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -30,13 +31,22 @@ export default function Home() {
     <main className="min-h-screen">
       <Navigation />
       <Hero />
-      <ThemeToggle />
-      <div className="px-8">
-      <About />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer />
+      
+      {/* Theme Toggles - Separate for Desktop and Mobile */}
+      <DesktopThemeToggle />
+      <MobileThemeToggle />
+      
+      {/* Mobile Enhancements */}
+      <MobileFloatingButton />
+      <MobilePullIndicator />
+      <MobileSwipeIndicator />
+      
+      <div className="px-4 sm:px-6 lg:px-8">
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+        <Footer />
       </div>
     </main>
   )

@@ -138,7 +138,7 @@ export default function Hero() {
 
       {/* Main Content */}
       <motion.div 
-        className="relative z-10 max-w-4xl w-full px-space-outer text-center items-center"
+        className="relative z-10 max-w-4xl w-full px-4 sm:px-6 lg:px-space-outer text-center items-center"
         style={{ marginTop: 'calc(var(--spaceL) * -1)' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: isVisible ? 1 : 0 }}
@@ -146,7 +146,7 @@ export default function Hero() {
       >
         {/* Name */}
         <motion.h1 
-          className="text-xl md:text-xl lg:text-2xl font-medium tracking-[0.3em] text-textLight mb-space-2xl uppercase cursor-target"
+          className="text-sm sm:text-base md:text-xl lg:text-2xl font-medium tracking-[0.2em] sm:tracking-[0.3em] text-textLight mb-8 sm:mb-space-2xl uppercase cursor-target"
           style={{ 
             opacity: isVisible ? 1 : 0,
             transition: 'opacity var(--durationL) var(--bezierFastoutSlowin) 0.2s'
@@ -158,10 +158,10 @@ export default function Hero() {
         </motion.h1>
 
         {/* Title with Role and Disciplines */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {/* Role */}
           <motion.div 
-            className="flex items-center justify-center gap-4 md:gap-8"
+            className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 md:gap-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
             transition={{ 
@@ -171,7 +171,7 @@ export default function Hero() {
             }}
           >
             <motion.span 
-              className="cursor-target text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight"
+              className="cursor-target text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-none tracking-tight"
               style={{
                 color: isVisible ? 'var(--textTitle)' : 'transparent',
                 transition: 'color 1.5s var(--bezierFastoutSlowin)',
@@ -182,7 +182,7 @@ export default function Hero() {
             </motion.span>
             
             <motion.div 
-              className="h-0.5 flex-1 max-w-[120px] md:max-w-[200px]"
+              className="h-0.5 w-16 sm:flex-1 sm:max-w-[120px] md:max-w-[200px]"
               style={{
                 background: 'color-mix(in lab, var(--text) 30%, transparent)',
                 scaleX: isVisible ? 1 : 0,
@@ -195,7 +195,7 @@ export default function Hero() {
 
           {/* Disciplines */}
           <motion.div 
-            className="flex items-center justify-center"
+            className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-0"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
             transition={{ 
@@ -204,12 +204,12 @@ export default function Hero() {
               ease: [0.4, 0.0, 0.2, 1]
             }}
           >
-            <span className="text-textLight/40 text-2xl md:text-3xl lg:text-4xl mr-4">+</span>
-            <div className="relative h-12 md:h-16 lg:h-20 flex items-center">
+            <span className="text-textLight/40 text-xl sm:text-2xl md:text-3xl lg:text-4xl sm:mr-4">+</span>
+            <div className="relative h-8 sm:h-12 md:h-16 lg:h-20 flex items-center">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={currentDiscipline}
-                  className="cursor-target text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold absolute whitespace-nowrap py-4"
+                  className="cursor-target text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold absolute whitespace-nowrap py-2 sm:py-4 text-center"
                   style={{ 
                     background: 'var(--primary)',
                     WebkitBackgroundClip: 'text',
