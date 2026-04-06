@@ -30,7 +30,9 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Navigation />
-      <Hero />
+      <section id="home">
+        <Hero />
+      </section>
       
       {/* Theme Toggles - Separate for Desktop and Mobile */}
       <DesktopThemeToggle />
@@ -42,10 +44,18 @@ export default function Home() {
       <MobileSwipeIndicator />
       
       <div className="px-4 sm:px-6 lg:px-8">
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+        <section id="about">
+          <About />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
         <Footer />
       </div>
     </main>
