@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+import { Menu, X, Github, Mail } from 'lucide-react'
+import { FaLinkedin } from 'react-icons/fa';
 
 
 const navItems = [
@@ -19,7 +20,7 @@ const socialLinks = [
     label: 'GitHub'
   },
   {
-    icon: Linkedin,
+    icon: FaLinkedin,
     href: 'https://www.linkedin.com/in/namansharma286/',
     label: 'LinkedIn'
   },

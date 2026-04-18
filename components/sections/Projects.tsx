@@ -50,7 +50,7 @@ export default function Projects() {
 
         {/* MagicBento Projects Grid */}
         <motion.div
-          className="flex justify-center px-2 sm:px-0"
+          className="flex justify-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}

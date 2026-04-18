@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Clock, Github, Linkedin, Twitter, ArrowUpRight, Send } from 'lucide-react'
+import { Mail, MapPin, Clock, ArrowUpRight, Send } from 'lucide-react'
+import { FaLinkedin, FaGithub, FaXTwitter } from 'react-icons/fa6';
 import { useState } from 'react'
 
 const contactMethods = [
@@ -34,22 +35,22 @@ const contactMethods = [
 
 const socialLinks = [
   {
-    icon: Github,
+    icon: FaGithub,
     name: 'GitHub',
     href: 'https://github.com/namansharma28',
     username: '@namansharma28'
   },
   {
-    icon: Linkedin,
+    icon: FaLinkedin,
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/namansharma286/',
     username: 'namansharma286'
   },
   {
-    icon: Twitter,
-    name: 'Twitter',
-    href: '#',
-    username: '@namansharma'
+    icon: FaXTwitter,
+    name: 'X',
+    href: 'https://x.com/NamanSharma_in',
+    username: '@NamanSharma_in'
   }
 ]
 

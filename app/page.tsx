@@ -52,7 +52,7 @@ export default function Home() {
         </section>
         <section id="skills">
           <Skills />
-        </section>
+        </section>/
         <section id="contact">
           <Contact />
         </section>

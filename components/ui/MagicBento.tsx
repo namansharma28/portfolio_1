@@ -32,39 +32,39 @@ const MOBILE_BREAKPOINT = 768;
 const cardData: BentoCardProps[] = [
   {
     color: 'var(--background-card)',
-    title: 'TeamLane',
-    description: 'Real-time collaboration platform with Kanban boards, WebSocket integration, and role-based access control',
-    label: 'Full Stack'
+    title: 'Nucleon CLI',
+    description: 'Powerful developer toolkit for project initialization, health analysis, smart commits, and workflow automation',
+    label: 'Developer Tool'
   },
   {
     color: 'var(--background-card)',
-    title: 'Gravitas',
-    description: 'Community-driven event management app with seamless UX and scalable backend architecture',
-    label: 'Web App'
+    title: 'Distributed Code Execution Engine',
+    description: 'High-performance distributed system using CRDT for conflict-free collaborative code execution, built with Golang',
+    label: 'Under Construction'
+  },
+  {
+    color: 'var(--background-card)',
+    title: 'TeamLane Live',
+    description: 'Real-time collaboration platform with Kanban boards, WebSocket integration, and role-based access control',
+    label: 'Full Stack App'
+  },
+  {
+    color: 'var(--background-card)',
+    title: 'Gravitas Live',
+    description: 'Explore the event management platform',
+    label: 'Live Preview'
+  },
+  {
+    color: 'var(--background-card)',
+    title: 'Sketch2Real',
+    description: 'ML-powered sketch to realistic image converter using Pix2Pix GAN architecture',
+    label: 'AI/ML'
   },
   {
     color: 'var(--background-card)',
     title: 'Stock Predictor',
     description: 'Advanced ML application using LSTM neural networks for stock price prediction with real-time visualization',
     label: 'Machine Learning'
-  },
-  {
-    color: 'var(--background-card)',
-    title: 'Sketch2Real',
-    description: 'AI-powered sketch to realistic image converter using Pix2Pix GAN architecture',
-    label: 'AI/ML'
-  },
-  {
-    color: 'var(--background-card)',
-    title: 'DevTools Suite',
-    description: 'Collection of developer productivity tools and utilities for modern web development',
-    label: 'Tools'
-  },
-  {
-    color: 'var(--background-card)',
-    title: 'Portfolio V3',
-    description: 'Modern portfolio website with advanced animations and interactive 3D elements',
-    label: 'Frontend'
   }
 ];
 
@@ -561,20 +561,22 @@ const MagicBento: React.FC<BentoProps> = ({
           
           .card-responsive {
             grid-template-columns: 1fr;
-            width: 95%;
+            width: 100%;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 0;
           }
           
-          @media (min-width: 600px) {
+          @media (min-width: 640px) {
             .card-responsive {
               grid-template-columns: repeat(2, 1fr);
+              gap: 0.75rem;
             }
           }
           
           @media (min-width: 1024px) {
             .card-responsive {
               grid-template-columns: repeat(4, 1fr);
+              gap: 0.5rem;
             }
             
             .card-responsive .card:nth-child(3) {
@@ -664,17 +666,32 @@ const MagicBento: React.FC<BentoProps> = ({
             text-overflow: ellipsis;
           }
           
-          @media (max-width: 599px) {
+          @media (max-width: 639px) {
             .card-responsive {
               grid-template-columns: 1fr;
-              width: 95%;
+              width: 100%;
               margin: 0 auto;
-              padding: 1rem;
+              padding: 0;
+              gap: 0.75rem;
             }
             
             .card-responsive .card {
               width: 100%;
-              min-height: 240px;
+              min-height: 280px;
+              padding: 1.5rem;
+              aspect-ratio: auto;
+            }
+            
+            .card__title {
+              font-size: 1.125rem !important;
+            }
+            
+            .card__description {
+              font-size: 0.875rem !important;
+            }
+            
+            .card__label {
+              font-size: 0.875rem !important;
             }
           }
         `}
@@ -693,7 +710,7 @@ const MagicBento: React.FC<BentoProps> = ({
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-2">
           {cardData.map((card, index) => {
-            const baseClassName = `cursor-target card flex flex-col justify-between relative aspect-[4/3] min-h-[280px] w-full max-w-full p-8 rounded-[24px] border border-solid font-light overflow-hidden transition-colors duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
+            const baseClassName = `cursor-target card flex flex-col justify-between relative aspect-[4/3] min-h-[280px] w-full max-w-full p-4 sm:p-6 lg:p-8 rounded-[20px] sm:rounded-[24px] border border-solid font-light overflow-hidden transition-colors duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? 'card--border-glow' : ''
             }`;
 
@@ -853,17 +870,147 @@ const MagicBento: React.FC<BentoProps> = ({
                   el.addEventListener('click', handleClick);
                 }}
               >
-                <div className="card__header flex justify-between gap-4 relative">
+                {/* <div className="card__header flex justify-between gap-4 relative z-10">
                   <span className="card__label text-lg font-medium" style={{ color: 'var(--text-primary)' }}>{card.label}</span>
                 </div>
-                <div className="card__content flex flex-col relative">
-                  <h3 className={`card__title font-normal text-xl m-0 mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`} style={{ color: 'var(--text-title)' }}>
-                    {card.title}
-                  </h3>
-                  <p className={`card__description text-sm leading-6 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`} style={{ color: 'var(--text-body)' }}>
-                    {card.description}
-                  </p>
-                </div>
+                 */}
+                {/* Special rendering for first card (Nucleon CLI) */}
+                {index === 0 ? (
+                  <div className="card__content flex flex-col relative h-full">
+                    <h3 className={`card__title font-normal text-xl m-0 mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`} style={{ color: 'var(--text-title)' }}>
+                      {card.title}
+                    </h3>
+                    <p className={`card__description text-sm leading-6 opacity-90 mb-3 ${textAutoHide ? 'text-clamp-2' : ''}`} style={{ color: 'var(--text-body)' }}>
+                      {card.description}
+                    </p>
+                    
+                    {/* Installation command block */}
+                    <div className="relative flex-1 flex items-center w-max">
+                      <div className="w-full bg-backgroundLight/80 backdrop-blur-sm rounded-lg border border-primary/20 p-1.5 font-mono">
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="flex items-center gap-2 flex-1 min-w-0">
+                            <span className="text-primary text-xs flex-shrink-0">$</span>
+                            <code className="text-textBody text-xs whitespace-nowrap">
+                              npm i -g nucleon-cli
+                            </code>
+                          </div>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigator.clipboard.writeText('npm i -g nucleon-cli');
+                              const btn = e.currentTarget;
+                              const originalText = btn.innerHTML;
+                              btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>';
+                              setTimeout(() => {
+                                btn.innerHTML = originalText;
+                              }, 2000);
+                            }}
+                            className="cursor-target flex-shrink-0 p-1.5 rounded-md bg-primary/10 hover:bg-primary/20 text-primary transition-all duration-200 hover:scale-110"
+                            title="Copy to clipboard"
+                          >
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : index === 2 ? (
+                  <div className="card__content flex flex-col relative h-full">
+                    <h3 className={`card__title font-normal text-xl m-0 mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`} style={{ color: 'var(--text-title)' }}>
+                      {card.title}
+                    </h3>
+                    <p className={`card__description text-sm leading-6 opacity-90 mb-4 ${textAutoHide ? 'text-clamp-2' : ''}`} style={{ color: 'var(--text-body)' }}>
+                      {card.description}
+                    </p>
+                    
+                    {/* Live website preview iframe */}
+                    <div className="relative flex-1 rounded-lg overflow-hidden border border-primary/20 bg-backgroundLight/50 backdrop-blur-sm mt-2">
+                      <iframe
+                        src="https://teamlane.grafene.in"
+                        className="w-full h-full min-h-[200px]"
+                        style={{
+                          border: 'none',
+                          transform: 'scale(0.25)',
+                          transformOrigin: 'top left',
+                          width: '400%',
+                          height: '400%'
+                        }}
+                        title="TeamLane Live Preview"
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin"
+                      />
+                      
+                      {/* Overlay with link to open in new tab */}
+                      <a
+                        href="https://teamlane.grafene.in"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-0 cursor-pointer group"
+                        style={{ background: 'transparent' }}
+                      >
+                        <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-all duration-300 flex items-center justify-center">
+                          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 py-2 bg-primary text-background rounded-full text-sm font-medium">
+                            Open Live Site →
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                ) : index === 3 ? (
+                  <div className="card__content flex flex-col relative h-full">
+                    <h3 className={`card__title font-normal text-xl m-0 mb-2 ${textAutoHide ? 'text-clamp-1' : ''}`} style={{ color: 'var(--text-title)' }}>
+                      {card.title}
+                    </h3>
+                    <p className={`card__description text-sm leading-6 opacity-90 mb-4 ${textAutoHide ? 'text-clamp-2' : ''}`} style={{ color: 'var(--text-body)' }}>
+                      {card.description}
+                    </p>
+                    
+                    {/* Live website preview iframe for Gravitas */}
+                    <div className="relative flex-1 rounded-lg overflow-hidden border border-primary/20 bg-backgroundLight/50 backdrop-blur-sm mt-2">
+                      <iframe
+                        src="https://gravitas.grafene.in"
+                        className="w-full h-full min-h-[200px]"
+                        style={{
+                          border: 'none',
+                          transform: 'scale(0.25)',
+                          transformOrigin: 'top left',
+                          width: '400%',
+                          height: '400%'
+                        }}
+                        title="Gravitas Live Preview"
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin"
+                      />
+                      
+                      {/* Overlay with link to open in new tab */}
+                      <a
+                        href="https://gravitas.grafene.in"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-0 cursor-pointer group"
+                        style={{ background: 'transparent' }}
+                      >
+                        <div className="absolute inset-0 bg-background/0 group-hover:bg-background/10 transition-all duration-300 flex items-center justify-center">
+                          <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4 py-2 bg-primary text-background rounded-full text-sm font-medium">
+                            Open Live Site →
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="card__content flex flex-col relative">
+                    <h3 className={`card__title font-normal text-xl m-0 mb-2 ${textAutoHide && index !== 1 ? 'text-clamp-1' : ''}`} style={{ color: 'var(--text-title)' }}>
+                      {card.title}
+                    </h3>
+                    <p className={`card__description text-sm leading-6 opacity-90 ${textAutoHide && index !== 1 ? 'text-clamp-2' : ''}`} style={{ color: 'var(--text-body)' }}>
+                      {card.description}
+                    </p>
+                  </div>
+                )}
               </div>
             );
           })}
